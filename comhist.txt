@@ -1,0 +1,286 @@
+ls
+cd /
+ls
+cd etc
+ls
+cd ~
+ls
+mkdir newdir
+ls
+rmdir newdir
+ls
+mkdir new
+ls
+cd new
+ls
+nano
+<!-- type "Test" and press ctrl + O key to writeout, then give file name "test1.txt", exit by pressing ctrl + X -->
+ls
+nano test2.txt
+<!-- type "Test 2", writeout, press enter to keep the filename, exit -->
+ls
+rm test1.txt
+ls
+cd ..
+ls
+rmdir new
+rm new
+rm -R new
+
+cd /
+cd etc
+ls
+cd kernel
+ls
+cd postinst
+ls
+cd ../..
+cd ~
+cat test.txt
+cat test.txt && cd /
+cd ~
+cat test.txt && cat test.txt
+cat test.txt && cat test.txt && cat test.txt
+
+cd /
+cd var
+cd log
+cat syslog
+cat syslog | less
+<!-- use pageup and pagedown to scroll through information when using less -->
+cat syslog | more
+<!-- use enter key to scroll down when using more -->
+cat syslog | grep register
+cat syslog | grep device
+
+cd ~
+ls
+cd new
+ls
+mv move_me ~
+cd ..
+ls
+cd new
+ls
+cd ~
+ls
+mv move_me new
+ls
+cd new
+ls
+mv test1 ~
+ls
+cd ~
+ls
+move test1 new
+ls
+cd new
+ls
+cp test1 ~
+ls
+cd ~
+ls
+cd new
+ls
+cp copy_me ~
+cp -R copy_me ~
+ls
+cd ~
+ls
+cd new
+ls
+cd copy_me
+ls
+cd ..
+rsync -avzP copy_me ~
+rm -R ~/copy_me
+rsync -avz copy_me ~
+rm -R ~/copy_me
+rsync -az copy_me ~
+
+sudo shutdown -h now "System maintenance!"
+sudo shutdown -h +10 "System is going down for repair soon!"
+<!-- Ctrl + C to cancel the shutdown -->
+sudo shutdown -h 17:00 "This is an optional message!"
+sudo shutdown -r 17:00 "Message"
+sudo reboot
+
+runlevel
+sudo telinit 1
+
+sudo cat /etc/sudoers
+su test1
+<!-- enter test1's password -->
+groups
+exit
+sudo visudo
+
+man cat
+df -h
+man df
+man rsync
+man sudo
+
+date
+sudo date MMddhhmmyyyy.ss
+
+sudo adduser test1
+<!-- enter password for test1 -->
+sudo addgroup testgroup
+groups test1
+cat /etc/group
+
+sudo passwd test1
+<!-- enter new password -->
+sudo deluser quest1
+sudo groupdel ludah
+sudo addgroup testy
+sudo adduser test1 testy
+sudo deluser test1 testy
+
+sudo apt-get install pente
+sudo apt-get remove pente
+sudo apt-cache search ftp
+sudo apt-get update
+sudo apt-get upgrade
+sudo nano /etc/apt/sources.list
+sudo do-release-upgrade
+
+ifconfig
+ping google.com
+cat network
+sudo nano /etc/hostname
+<!-- if you make changes in this file, reboot your system -->
+sudo nano /etc/network/interfaces
+<!-- discard the changes if any -->
+sudo ifdown eth0
+sudo ifup eth0
+
+cat permissions
+ls -l
+
+chmod 777 test.txt
+ls
+ls -l
+ls -l test.txt
+chmod 664 test.txt
+ls
+ls -l
+ls -l test.txt
+sudo chown root test.txt
+ls -l test.txt
+sudo chgrp root test.txt
+ls -l test.txt
+sudo chown keyur test.txt
+chgrp keyur test.txt
+ls -l test.txt
+
+getfacl test36
+setfacl -m group::rwx test36
+getfacl test36
+setfacl -m user:liam:rwx test36
+getfacl test36
+setfacl -x user:liam test36
+
+df -h
+sudo fdisk -l
+sudo fdisk /dev/sda
+sudo parted
+sudo fdisk /dev/sdb
+n
+w
+sudo mkfs.ext3 /dev/sdb1
+
+cd /mnt
+ls
+sudo mkdir sdb
+sudo mkdir sdc
+sudo mount -t ext3 /dev/sdb1 /mnt/sdb
+cd sdb
+ls
+sudo mkdir Hello
+ls
+cd ~
+sudo umount /dev/sdb1
+cd /mnt/sdb
+ls
+sudo mount -t ext3 /dev/sdb1 /mnt/sdb
+sudo blkid
+<!-- copy UUID -->
+sudo nano /etc/fstab
+<!-- enter the copied UUID and other information in the file and save it -->
+sudo umount /dev/sdb1
+sudo mount /dev/sdb1
+
+sudo apt-get install mdadm
+sudo mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1
+
+service samba status
+sudo nano /etc/samba/smb.conf
+[hello]
+	path = /mnt/sdb
+	browsable = yes
+	guest ok = no
+	writeable = yes
+	valid users = user1,user2
+	hide unreadable = yes
+sudo smbpasswd -a username
+
+cd /etc
+ls
+cd cron.daily
+crontab -e
+1 * * * * echo "Hello World"
+
+service ssh status
+
+cd /var/www
+cd html
+sudo nano index.html
+sudo service apache2 start
+sudo service apache2 status
+sudo service apache2 stop
+sudo service apache2 start
+sudo service apache2 restart
+
+sudo apt-get install cowsay
+cowsay -f stegosaurus.cow LINUX IS COOL!
+sudo apt-get install links
+links
+Ctrl + G
+google.com
+Ctrl + G
+nbcnews.com
+Ctrl + Z
+fg links
+q
+cowsay -f milk.cow HAPPY BROWSING!
+
+sudo apt-get install fortune
+fortune
+fortune | cowsay
+
+wget http://prdownloads.sourceforge.net/webadmin/webmin_1.991_all.deb
+sudo dpkg --install webmin_1.991_all.deb
+sudo apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python unzip
+sudo apt --fix-broken install
+sudo dpkg --install webmin_1.991_all.deb
+
+ps
+fg
+sudo kill -9 2529
+top
+
+nano myscript.sh
+./myscript.sh
+
+links
+Ctrl + G
+timeclock.sourceforge.net
+Downloads
+Select latest version by scrolling down
+download tar.gz file
+sudo tar -xvzf timeclock-1.04.tar.gz
+cd timeclock-1.04/
+sudo mv timeclock-1.04 /var/www/html/
+sudo apt-get install mysql-server php5 php5-mysql
